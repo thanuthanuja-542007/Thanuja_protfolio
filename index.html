@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Thanuja K N - Software Engineer & ECE Student with scenic nature background and fluttering butterflies">
+  <meta name="author" content="Thanuja K N">
+  <title>Thanuja K N | Software Engineer Portfolio</title>
+  
+  <!-- Modern Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet with Nature Theme & Top Navigation -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================= -->
+  <!-- FULLSCREEN NATURE BACKGROUND & FLUTTERING BUTTERFLIES     -->
+  <!-- ========================================================= -->
+  <div class="nature-background" aria-hidden="true"></div>
+  <div class="nature-overlay" aria-hidden="true"></div>
+  <canvas id="butterfly-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================================= -->
+  <!-- TOP NAVIGATION BAR (MOVED FROM LEFT SIDEBAR TO TOP)       -->
+  <!-- Sticky Frosted Glass Navbar with Brand, Links, & Theme    -->
+  <!-- ========================================================= -->
+  <header id="top-header">
+    <div class="top-nav-container">
+
+      <!-- Brand Logo on Left -->
+      <a href="#hero" class="brand-wrapper">
+        <span class="brand-leaf-icon">🌿</span>
+        <div class="brand-text-group">
+          <span class="brand-title">THANUJA.DEV</span>
+          <span class="brand-badge-pill">
+            <span>✦</span> Software Engineer
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Top Navigation Menu Links (All 8 Links) -->
+      <nav id="navbar" aria-label="Main Navigation">
+        <ul class="top-nav-menu" role="menubar">
+          <li role="none">
+            <a href="#hero" class="top-nav-link active" role="menuitem">
+              <span class="nav-link-icon">🏡</span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#about" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">👤</span>
+              <span>About Me</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#skills" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">⚡</span>
+              <span>Skills</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#timeline" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">⏳</span>
+              <span>Timeline</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#projects" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">🚀</span>
+              <span>Projects</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#testimonials" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">💬</span>
+              <span>Testimonials</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#chat" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">🤖</span>
+              <span>AI Chat</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#contact" class="top-nav-link" role="menuitem">
+              <span class="nav-link-icon">📬</span>
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Controls: Theme Toggle & Mobile Hamburger -->
+      <div class="top-nav-controls">
+        <button id="night-mode-toggle" class="nature-toggle-btn" aria-label="Toggle Night Mode">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-label">Twilight</span>
+        </button>
+
+        <button 
+          id="mobile-menu-toggle" 
+          class="mobile-menu-btn" 
+          aria-label="Toggle mobile menu" 
+          aria-expanded="false" 
+          aria-controls="mobile-nav-drawer"
+        >
+          <span id="menu-icon">☰</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Slide-Down Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="#hero" class="top-nav-link">🏡 Home</a></li>
+        <li><a href="#about" class="top-nav-link">👤 About Me</a></li>
+        <li><a href="#skills" class="top-nav-link">⚡ Skills</a></li>
+        <li><a href="#timeline" class="top-nav-link">⏳ Timeline</a></li>
+        <li><a href="#projects" class="top-nav-link">🚀 Projects</a></li>
+        <li><a href="#testimonials" class="top-nav-link">💬 Testimonials</a></li>
+        <li><a href="#chat" class="top-nav-link">🤖 AI Chat</a></li>
+        <li><a href="#contact" class="top-nav-link">📬 Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- MAIN PAGE CONTENT WRAPPER (CENTERED, FULL-WIDTH)          -->
+  <!-- ========================================================= -->
+  <div class="page-wrapper">
+
+    <main id="main-content">
+
+      <!-- ======================================================= -->
+      <!-- HERO SECTION (NATURE PARADISE STYLE)                    -->
+      <!-- ======================================================= -->
+      <section id="hero" class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-container">
+
+          <!-- Left: Hero Text Content -->
+          <div class="hero-text-content">
+            <div class="hero-status-pill">
+              <span>🌿</span>
+              <span>Software Engineer &bull; Electronics Innovator</span>
+            </div>
+
+            <p class="hero-greeting">Welcome to my botanical space, I'm</p>
+            <h1 id="hero-title" class="hero-main-title">Thanuja K N</h1>
+
+            <p class="hero-tagline">
+              Engineering elegant <strong>embedded systems</strong>, innovative algorithms, 
+              and intuitive <strong>software applications</strong> inspired by the harmony and vitality of nature.
+            </p>
+
+            <!-- Nature Highlights Row -->
+            <div class="hero-highlights-row">
+              <div class="highlight-chip">
+                <span>📍</span> Chikkamagaluru, Karnataka
+              </div>
+              <div class="highlight-chip">
+                <span>🎓</span> AIT ECE &bull; <span>CGPA 8.0</span>
+              </div>
+              <div class="highlight-chip">
+                <span>⚡</span> <span>Python</span>, <span>C</span> &amp; Modern Web
+              </div>
+            </div>
+
+            <!-- Call to Action Buttons -->
+            <div class="hero-actions">
+              <a href="#projects" class="nature-btn nature-btn-primary">
+                <span>Explore Projects</span>
+                <span>→</span>
+              </a>
+              <a href="#contact" class="nature-btn nature-btn-secondary">
+                <span>Get In Touch</span>
+                <span>✉</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Nature Portrait Card with User Photo -->
+          <div class="hero-avatar-wrapper">
+            <div class="nature-portrait-card">
+              <!-- Floating Nature Orbit Badges -->
+              <div class="floating-badge badge-top-left">
+                <span>🦋</span>
+                <span>Safety &amp; Research</span>
+              </div>
+              <div class="floating-badge badge-bottom-right">
+                <span>🌸</span>
+                <span>Hackathon Finalist</span>
+              </div>
+
+              <div class="portrait-image-container">
+                <img 
+                  src="hero-bg.jpg" 
+                  alt="Portrait of Thanuja K N" 
+                  class="portrait-img"
+                  loading="eager"
+                >
+              </div>
+
+              <div class="portrait-info-pill">
+                <span class="portrait-name">Thanuja K N</span>
+                <span class="portrait-subtitle">Engineering the Future</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- ABOUT ME SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="about" class="section" aria-labelledby="about-title">
+        <div class="section-header">
+          <h2 id="about-title" class="section-title">👤 About Me</h2>
+          <p class="section-subtitle">Personal journey, academic foundation, and engineering goals.</p>
+        </div>
+        
+        <div class="placeholder-box">
+          <span class="placeholder-badge">ABOUT ME PLACEHOLDER</span>
+          <p>Electronics &amp; Communication Engineering student at Adichunchanagiri Institute of Technology (AIT). Driven by high-impact problem solving, hardware-software integration, and continuous learning with strong foundations in Python and C programming.</p>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- SKILLS SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <div class="section-header">
+          <h2 id="skills-title" class="section-title">⚡ Skills &amp; Competencies</h2>
+          <p class="section-subtitle">Core technical stack, engineering toolset, and development methodologies.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <h3>💻 Programming &amp; Logic</h3>
+            <p>Python, C Programming, Algorithms, Data Structures, Modern HTML5, CSS3, and JavaScript.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">🐍 Python</span>
+              <span class="tech-tag">⚡ C</span>
+              <span class="tech-tag">🌐 HTML5/CSS3</span>
+              <span class="tech-tag">📜 JavaScript</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <h3>🛰️ Electronics &amp; Hardware</h3>
+            <p>Sensors, Microcontrollers, Circuit Analysis, and IoT Monitoring prototypes.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Microcontrollers</span>
+              <span class="tech-tag">Sensors</span>
+              <span class="tech-tag">IoT Systems</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <h3>🚀 Tools &amp; Collaboration</h3>
+            <p>Git, GitHub, VS Code, Rapid Prototyping, and cross-functional team coordination.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Git</span>
+              <span class="tech-tag">GitHub</span>
+              <span class="tech-tag">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- TIMELINE SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="timeline" class="section" aria-labelledby="timeline-title">
+        <div class="section-header">
+          <h2 id="timeline-title" class="section-title">⏳ Education &amp; Milestones</h2>
+          <p class="section-subtitle">Chronological progression of academic milestones and hackathons.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <h3>🎓 B.E. in ECE (2025 – 2029)</h3>
+            <p>Adichunchanagiri Institute of Technology (AIT) &bull; CGPA: 8.0 &bull; Chikkamagaluru, Karnataka.</p>
+          </div>
+          <div class="info-card">
+            <h3>🏆 24-Hour Hackathon</h3>
+            <p>Participated in high-intensity sprint, architecting and demoing a functioning technology solution.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- PROJECTS SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="section-header">
+          <h2 id="projects-title" class="section-title">🚀 Featured Projects</h2>
+          <p class="section-subtitle">Selected engineering builds, hardware integrations, and software applications.</p>
+        </div>
+
+        <div class="card-grid">
+          <!-- Project 1: Women's Safety & Monitoring -->
+          <div class="info-card project-card">
+            <div class="project-meta-row">
+              <span class="project-card-badge">✦ Safety &amp; Security</span>
+              <span class="project-duration">⏱️ 3 Months</span>
+            </div>
+            <h3>🛡️ Women’s Safety &amp; Monitoring</h3>
+            <p>A 3-month dedicated engineering initiative focused on personal safety, emergency alert generation, GPS coordinate tracking, and instant SOS dispatch assistance.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Embedded C</span>
+              <span class="tech-tag">IoT Hardware</span>
+              <span class="tech-tag">GPS / GSM</span>
+              <span class="tech-tag">Safety Alerts</span>
+            </div>
+          </div>
+
+          <!-- Project 2: Charging and Monitoring -->
+          <div class="info-card project-card">
+            <div class="project-meta-row">
+              <span class="project-card-badge">✦ Power &amp; Embedded</span>
+              <span class="project-duration">⏱️ 3 Months</span>
+            </div>
+            <h3>🔋 Charging and Monitoring</h3>
+            <p>A 3-month engineering project developing an intelligent battery charging and monitoring system to track real-time voltage levels, current flow, temperature thresholds, and prevent overcharging with automated cutoff mechanisms.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Microcontrollers</span>
+              <span class="tech-tag">Voltage Sensing</span>
+              <span class="tech-tag">Thermal Safety</span>
+              <span class="tech-tag">Battery Telemetry</span>
+            </div>
+          </div>
+
+          <!-- Project 3: Nature Portfolio Application -->
+          <div class="info-card project-card">
+            <div class="project-meta-row">
+              <span class="project-card-badge">✦ Web Development</span>
+              <span class="project-duration">✨ Live</span>
+            </div>
+            <h3>🌿 Nature Portfolio Application</h3>
+            <p>Modern interactive personal website built with semantic HTML5, CSS3 glassmorphism, responsive top navigation, and dynamic 60fps canvas fluttering butterflies.</p>
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5 Semantic</span>
+              <span class="tech-tag">Vanilla CSS3</span>
+              <span class="tech-tag">HTML5 Canvas</span>
+              <span class="tech-tag">Responsive UI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- EMBEDDED VIDEO SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="video-highlight" class="section" aria-labelledby="video-title">
+        <div class="section-header">
+          <h2 id="video-title" class="section-title">🎥 Video Showcase</h2>
+          <p class="section-subtitle">Dedicated showcase for video introduction or project demo.</p>
+        </div>
+
+        <div class="placeholder-box">
+          <span class="placeholder-badge">YOUTUBE EMBED CONTAINER</span>
+          <p>Responsive 16:9 container ready for project video demonstration.</p>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- TESTIMONIALS SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+        <div class="section-header">
+          <h2 id="testimonials-title" class="section-title">💬 Testimonials &amp; Feedback</h2>
+          <p class="section-subtitle">Mentorship and collaboration reviews.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <p>&ldquo;Thanuja shows exemplary dedication to technology problem-solving, analytical rigor, and project execution.&rdquo;</p>
+            <br>
+            <strong>&mdash; Academic Mentor</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- AI CHAT INTERFACE SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="chat" class="section" aria-labelledby="chat-title">
+        <div class="section-header">
+          <h2 id="chat-title" class="section-title">🤖 AI Assistant Chat</h2>
+          <p class="section-subtitle">Interactive AI dialogue to answer visitor queries.</p>
+        </div>
+
+        <div class="placeholder-box">
+          <span class="placeholder-badge">AI CHAT INTERFACE PLACEHOLDER</span>
+          <p>Interactive chat dialogue interface ready for OpenAI or custom LLM API connection.</p>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- CONTACT SECTION PLACEHOLDER -->
+      <!-- ======================================================= -->
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <div class="section-header">
+          <h2 id="contact-title" class="section-title">📬 Contact &amp; Inquiries</h2>
+          <p class="section-subtitle">Direct transmissions and collaboration requests.</p>
+        </div>
+
+        <div class="placeholder-box">
+          <span class="placeholder-badge">CONTACT FORM PLACEHOLDER</span>
+          <p>Name, Email, Message input fields with high-contrast submit button and Resend API hook.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ======================================================= -->
+    <!-- FOOTER -->
+    <!-- ======================================================= -->
+    <footer id="site-footer">
+      <div class="footer-links">
+        <a href="mailto:thanuthanuja855@gmail.com" aria-label="Send Email"><span>📧</span> thanuthanuja855@gmail.com</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><span>💼</span> LinkedIn</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><span>🐙</span> GitHub</a>
+      </div>
+      <p class="copyright-text">&copy; 2026 Thanuja K N. All rights reserved. Crafted with Nature &amp; Butterflies.</p>
+    </footer>
+
+  </div> <!-- End page-wrapper -->
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT: FLUTTERING BUTTERFLIES ENGINE & THEME TOGGLE  -->
+  <!-- ========================================================= -->
+  <script>
+    /* --------------------------------------------------------
+       1. ANIMATED FLUTTERING BUTTERFLIES & GLOWING POLLEN ENGINE
+       -------------------------------------------------------- */
+    const canvas = document.getElementById('butterfly-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
+
+    // Butterfly Species Color Palettes
+    const butterflySpecies = [
+      { primary: '#ff7b00', secondary: '#ffa200', edge: '#1f1305', spot: '#ffffff', glow: 'rgba(255, 130, 0, 0.4)' }, // Monarch
+      { primary: '#00d4ff', secondary: '#38bdf8', edge: '#032030', spot: '#ffffff', glow: 'rgba(0, 212, 255, 0.5)' }, // Blue Morpho
+      { primary: '#10b981', secondary: '#34d399', edge: '#062015', spot: '#fef08a', glow: 'rgba(16, 185, 129, 0.5)' }, // Emerald
+      { primary: '#ec4899', secondary: '#f472b6', edge: '#280515', spot: '#ffffff', glow: 'rgba(236, 72, 153, 0.45)' }, // Pink Orchid
+      { primary: '#fbbf24', secondary: '#fde047', edge: '#261b02', spot: '#ffffff', glow: 'rgba(251, 191, 36, 0.5)' }  // Golden Swallowtail
+    ];
+
+    // Pollen sparkles
+    const sparkles = [];
+
+    class PollenSparkle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = Math.random() * 2 + 1;
+        this.alpha = 0.8;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = Math.random() * 0.5 + 0.2;
+        this.decay = Math.random() * 0.02 + 0.015;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+      }
+      draw() {
+        if (this.alpha <= 0) return;
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    class Butterfly {
+      constructor(species, delay = 0) {
+        this.species = species;
+        this.reset(true);
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.wingPhase = Math.random() * Math.PI * 2;
+        this.flapSpeed = Math.random() * 0.18 + 0.22;
+        this.scale = Math.random() * 0.35 + 0.7; // size
+        this.time = Math.random() * 100;
+        this.flightSpeed = Math.random() * 1.5 + 1.2;
+      }
+
+      reset(initial = false) {
+        const fromLeft = Math.random() > 0.5;
+        this.x = initial ? Math.random() * width : (fromLeft ? -50 : width + 50);
+        this.y = Math.random() * (height * 0.85) + 50;
+        this.targetVx = fromLeft ? Math.random() * 1.2 + 0.8 : -(Math.random() * 1.2 + 0.8);
+        this.targetVy = (Math.random() - 0.5) * 1.0;
+        this.vx = this.targetVx;
+        this.vy = this.targetVy;
+      }
+
+      update() {
+        this.time += 0.04;
+        this.wingPhase += this.flapSpeed;
+
+        // Fluttering physics: smooth sinusoidal wandering
+        this.targetVy += Math.sin(this.time * 2) * 0.08;
+        this.targetVx += Math.cos(this.time * 1.5) * 0.05;
+
+        // Smooth velocity interpolation
+        this.vx += (this.targetVx - this.vx) * 0.05;
+        this.vy += (this.targetVy - this.vy) * 0.05;
+
+        this.x += this.vx * this.flightSpeed;
+        this.y += this.vy * this.flightSpeed;
+
+        // Occasional trail sparkles
+        if (Math.random() < 0.25) {
+          sparkles.push(new PollenSparkle(this.x, this.y, this.species.secondary));
+        }
+
+        // Screen boundary wrapping
+        if (this.x < -80) this.x = width + 70;
+        if (this.x > width + 80) this.x = -70;
+        if (this.y < -50) this.y = height + 40;
+        if (this.y > height + 60) this.y = -40;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+
+        // Heading rotation + bank angle
+        const heading = Math.atan2(this.vy, this.vx);
+        ctx.rotate(heading);
+
+        // 3D Flap compression factor: oscillates between 0.1 and 1
+        const flap = Math.abs(Math.sin(this.wingPhase));
+        const wingSpan = Math.max(0.12, flap) * this.scale;
+
+        // Butterfly body
+        ctx.fillStyle = '#11181c';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 7 * this.scale, 2 * this.scale, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Antennae
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(6 * this.scale, -1 * this.scale);
+        ctx.quadraticCurveTo(11 * this.scale, -6 * this.scale, 13 * this.scale, -7 * this.scale);
+        ctx.moveTo(6 * this.scale, 1 * this.scale);
+        ctx.quadraticCurveTo(11 * this.scale, 6 * this.scale, 13 * this.scale, 7 * this.scale);
+        ctx.stroke();
+
+        // Top Wing (Left)
+        this.drawWing(1, wingSpan);
+        // Bottom Wing (Right)
+        this.drawWing(-1, wingSpan);
+
+        ctx.restore();
+      }
+
+      drawWing(side, wingSpan) {
+        ctx.save();
+        ctx.scale(1, side * wingSpan);
+
+        // Forewing Gradient
+        const grad = ctx.createRadialGradient(
+          0, -6 * this.scale, 2,
+          0, -14 * this.scale, 24 * this.scale
+        );
+        grad.addColorStop(0, '#ffffff');
+        grad.addColorStop(0.35, this.species.secondary);
+        grad.addColorStop(0.8, this.species.primary);
+        grad.addColorStop(1, this.species.edge);
+
+        ctx.fillStyle = grad;
+        ctx.strokeStyle = this.species.edge;
+        ctx.lineWidth = 1.2;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = this.species.glow;
+
+        // Forewing path
+        ctx.beginPath();
+        ctx.moveTo(2 * this.scale, 0);
+        ctx.bezierCurveTo(
+          6 * this.scale, -18 * this.scale, 
+          20 * this.scale, -26 * this.scale, 
+          26 * this.scale, -16 * this.scale
+        );
+        ctx.bezierCurveTo(
+          28 * this.scale, -6 * this.scale, 
+          16 * this.scale, -2 * this.scale, 
+          0, 0
+        );
+        ctx.fill();
+        ctx.stroke();
+
+        // Hindwing path
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(
+          -4 * this.scale, -8 * this.scale, 
+          -14 * this.scale, -18 * this.scale, 
+          -18 * this.scale, -10 * this.scale
+        );
+        ctx.bezierCurveTo(
+          -18 * this.scale, -2 * this.scale, 
+          -8 * this.scale, 0, 
+          0, 0
+        );
+        ctx.fill();
+        ctx.stroke();
+
+        // Decorative wing spots
+        ctx.fillStyle = this.species.spot;
+        ctx.beginPath();
+        ctx.arc(20 * this.scale, -15 * this.scale, 1.2 * this.scale, 0, Math.PI * 2);
+        ctx.arc(16 * this.scale, -19 * this.scale, 1 * this.scale, 0, Math.PI * 2);
+        ctx.arc(-13 * this.scale, -10 * this.scale, 1 * this.scale, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+    }
+
+    // Spawn 7 diverse butterflies fluttering across the nature scenery
+    const butterflies = [
+      new Butterfly(butterflySpecies[0]), // Monarch
+      new Butterfly(butterflySpecies[1]), // Morpho
+      new Butterfly(butterflySpecies[2]), // Emerald
+      new Butterfly(butterflySpecies[3]), // Pink
+      new Butterfly(butterflySpecies[4]), // Gold
+      new Butterfly(butterflySpecies[1]), // Morpho 2
+      new Butterfly(butterflySpecies[0])  // Monarch 2
+    ];
+
+    function animateButterflies() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Render sparkles
+      for (let i = sparkles.length - 1; i >= 0; i--) {
+        sparkles[i].update();
+        sparkles[i].draw();
+        if (sparkles[i].alpha <= 0) sparkles.splice(i, 1);
+      }
+
+      // Render & flutter butterflies
+      butterflies.forEach(b => {
+        b.update();
+        b.draw();
+      });
+
+      requestAnimationFrame(animateButterflies);
+    }
+
+    animateButterflies();
+
+    /* --------------------------------------------------------
+       2. TOP NAVIGATION SCROLLSPY & MOBILE DRAWER
+       -------------------------------------------------------- */
+    const navLinks = document.querySelectorAll('.top-nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileDrawer = document.getElementById('mobile-nav-drawer');
+    const menuIcon = document.getElementById('menu-icon');
+
+    // ScrollSpy: highlight active link in top navbar
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+      const scrollPos = window.scrollY + 140;
+
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSection = sec.getAttribute('id');
+        }
+      });
+
+      if (currentSection) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentSection) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+
+    // Mobile Drawer Toggle
+    function toggleMobileMenu(open) {
+      const isOpen = open !== undefined ? open : !mobileDrawer.classList.contains('open');
+      mobileDrawer.classList.toggle('open', isOpen);
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+      menuIcon.textContent = isOpen ? '✕' : '☰';
+    }
+
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', () => toggleMobileMenu());
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-nav-list .top-nav-link').forEach(link => {
+      link.addEventListener('click', () => toggleMobileMenu(false));
+    });
+
+    // Close mobile menu on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+        toggleMobileMenu(false);
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mobileDrawer.classList.contains('open') && 
+          !mobileDrawer.contains(e.target) && 
+          !mobileToggle.contains(e.target)) {
+        toggleMobileMenu(false);
+      }
+    });
+
+    /* --------------------------------------------------------
+       3. NATURE THEME TOGGLE (SUNLIGHT / TWILIGHT)
+       -------------------------------------------------------- */
+    const toggleBtn = document.getElementById('night-mode-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeLabel = document.getElementById('theme-label');
+    const htmlEl = document.documentElement;
+    const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        htmlEl.setAttribute('data-theme', 'light');
+        document.body.classList.add('light-theme');
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Sunlight';
+      } else {
+        htmlEl.setAttribute('data-theme', 'dark');
+        document.body.classList.remove('light-theme');
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Twilight';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('nature-theme-preference');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(mediaQueryDark.matches ? 'dark' : 'light');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme') || (mediaQueryDark.matches ? 'dark' : 'light');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('nature-theme-preference', newTheme);
+      applyTheme(newTheme);
+    });
+  </script>
+
+</body>
+</html>

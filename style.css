@@ -1,0 +1,1077 @@
+/* ==========================================================================
+   PORTFOLIO STYLESHEET - ETHEREAL NATURE & BUTTERFLIES THEME
+   Software Engineer: Thanuja K N
+   Theme: Scenic Nature Forest with Animated Fluttering Butterflies & Top Nav
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. MODERN TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* --------------------------------------------------------------------------
+   2. NATURE THEME VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Nature Dark Palette (Lush Twilight Forest) */
+  --bg-deep: #061510;
+  --overlay-dark: rgba(4, 15, 10, 0.65);
+  --overlay-radial: radial-gradient(circle at 50% 25%, rgba(6, 25, 18, 0.45) 0%, rgba(3, 12, 8, 0.82) 90%);
+
+  /* Glassmorphism Surfaces */
+  --glass-bg: rgba(9, 28, 20, 0.72);
+  --glass-bg-hover: rgba(16, 44, 32, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-glow: rgba(52, 211, 153, 0.45);
+  --glass-nav: rgba(6, 20, 14, 0.82);
+
+  /* Typography */
+  --text-main: #f0fdf4;
+  --text-muted: #a7f3d0;
+  --text-subtle: #6ee7b7;
+
+  /* Nature Accents */
+  --nature-emerald: #10b981;
+  --nature-leaf: #34d399;
+  --nature-mint: #6ee7b7;
+  --nature-gold: #fbbf24;
+  --nature-blossom: #f472b6;
+  --nature-sky: #38bdf8;
+
+  /* Gradients */
+  --gradient-nature: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-text: linear-gradient(135deg, #ffffff 0%, #a7f3d0 45%, #fde68a 100%);
+  --gradient-blossom: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 35px rgba(16, 185, 129, 0.22);
+}
+
+/* Light / Sunny Forest Mode */
+[data-theme="light"],
+body.light-theme {
+  --overlay-dark: rgba(240, 253, 244, 0.65);
+  --overlay-radial: radial-gradient(circle at 50% 25%, rgba(240, 253, 244, 0.5) 0%, rgba(220, 252, 231, 0.88) 90%);
+
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-bg-hover: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(6, 78, 59, 0.1);
+  --glass-border-glow: rgba(5, 150, 105, 0.4);
+  --glass-nav: rgba(255, 255, 255, 0.88);
+
+  --text-main: #064e3b;
+  --text-muted: #047857;
+  --text-subtle: #059669;
+
+  --gradient-text: linear-gradient(135deg, #064e3b 0%, #047857 50%, #0284c7 100%);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 30px rgba(5, 150, 105, 0.12);
+  --shadow-glow: 0 0 30px rgba(16, 185, 129, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   3. BASE RESET & FULLSCREEN NATURE BACKGROUND
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Fixed Fullscreen Nature Photographic Wallpaper */
+.nature-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('nature-bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  z-index: -3;
+  pointer-events: none;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+/* Soft Sunlight & Vignette Contrast Overlay */
+.nature-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--overlay-radial);
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Animated Butterfly & Pollen Particle Canvas */
+#butterfly-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. TOP NAVIGATION BAR (REPLACES LEFT VERTICAL SIDEBAR)
+   Sticky frosted glass navigation with brand, links, and theme toggle
+   -------------------------------------------------------------------------- */
+#top-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--glass-nav);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.top-nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Brand Logo */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-leaf-icon {
+  font-size: 1.35rem;
+  display: inline-block;
+  animation: leaf-sway 3s infinite ease-in-out;
+}
+
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(12deg) scale(1.1); }
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.brand-badge-pill {
+  font-size: 0.72rem;
+  color: var(--nature-gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Horizontal Top Navigation Links */
+.top-nav-menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.top-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.95rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.nav-link-icon {
+  font-size: 1rem;
+}
+
+.top-nav-link:hover {
+  color: var(--text-main);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border);
+  transform: translateY(-2px);
+}
+
+.top-nav-link.active,
+.top-nav-link:focus-visible {
+  color: #ffffff;
+  background: var(--gradient-nature);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  font-weight: 600;
+  outline: none;
+}
+
+/* Top Nav Right Controls */
+.top-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Nature Theme Toggle Button */
+.nature-toggle-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 0.5rem 0.95rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+.nature-toggle-btn:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  color: var(--nature-gold);
+}
+
+/* Mobile Hamburger Toggle */
+.mobile-menu-btn {
+  display: none;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   5. MOBILE SLIDE-OUT MENU DRAWER
+   -------------------------------------------------------------------------- */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: var(--glass-nav);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1.5rem;
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-list .top-nav-link {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   6. MAIN PAGE LAYOUT (FULL WIDTH CENTERED - NO LEFT MARGIN)
+   -------------------------------------------------------------------------- */
+.page-wrapper {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+#main-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO SECTION (NATURE PARADISE STYLE)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.5rem 3rem;
+  margin-bottom: 3.5rem;
+  border-radius: 32px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  overflow: hidden;
+}
+
+/* Soft Sunlight Flare Accent */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(16, 185, 129, 0.1) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.hero-text-content {
+  text-align: left;
+}
+
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nature-mint);
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 14px rgba(16, 185, 129, 0.2);
+}
+
+.hero-greeting {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--nature-gold);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+}
+
+.hero-main-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.25rem;
+}
+
+.hero-tagline {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 2.25rem;
+  max-width: 600px;
+}
+
+.hero-tagline strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Nature Highlights Row */
+.hero-highlights-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.highlight-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  padding: 0.55rem 1rem;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.highlight-chip span {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Call to Action Buttons */
+.hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.nature-btn {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.85rem 1.85rem;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nature-btn-primary {
+  background: var(--gradient-nature);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 22px rgba(16, 185, 129, 0.45);
+}
+
+.nature-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.65);
+}
+
+.nature-btn-secondary {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+.nature-btn-secondary:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-glow);
+  transform: translateY(-3px);
+  color: var(--nature-gold);
+}
+
+/* Right: Nature Portrait Card */
+.hero-avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nature-portrait-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 1.1rem;
+  box-shadow: var(--shadow-md), 0 0 45px rgba(16, 185, 129, 0.25);
+  max-width: 340px;
+  width: 100%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nature-portrait-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md), 0 0 55px rgba(52, 211, 153, 0.38);
+}
+
+.portrait-image-container {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.portrait-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.nature-portrait-card:hover .portrait-img {
+  transform: scale(1.03);
+}
+
+.portrait-info-pill {
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.portrait-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.portrait-subtitle {
+  font-size: 0.8rem;
+  color: var(--nature-mint);
+  font-weight: 500;
+}
+
+/* Floating Nature Badges */
+.floating-badge {
+  position: absolute;
+  background: var(--glass-nav);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  padding: 0.55rem 1rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+  animation: float-badge 4s infinite ease-in-out alternate;
+}
+
+.badge-top-left {
+  top: -12px;
+  left: -20px;
+  color: var(--nature-gold);
+}
+
+.badge-bottom-right {
+  bottom: 20px;
+  right: -20px;
+  color: var(--nature-blossom);
+  animation-delay: 2s;
+}
+
+@keyframes float-badge {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+/* --------------------------------------------------------------------------
+   8. MODERN NATURE GLASS SECTIONS & RESPONSIVE GRID LAYOUTS
+   -------------------------------------------------------------------------- */
+.section {
+  padding: clamp(2rem, 4.5vw, 3.75rem) clamp(1.25rem, 3.5vw, 2.75rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: clamp(18px, 3vw, 28px);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.section:hover {
+  border-color: var(--glass-border-glow);
+}
+
+.section-header {
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.section-subtitle {
+  font-size: clamp(0.88rem, 1.6vw, 1.02rem);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.placeholder-box {
+  border: 2px dashed rgba(52, 211, 153, 0.35);
+  border-radius: 18px;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2.5vw, 2rem);
+  text-align: center;
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.placeholder-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--nature-mint);
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+/* Fluid Auto-Fit Card Grids */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-top: 1.5rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: clamp(1.25rem, 2.5vw, 1.85rem);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--glass-border-glow);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.info-card h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.info-card p {
+  color: var(--text-muted);
+  font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+}
+
+/* Project Card Specific Enhancements */
+.project-card {
+  justify-content: space-between;
+}
+
+.project-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.project-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--nature-gold);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  padding: 0.22rem 0.65rem;
+  border-radius: 9999px;
+  width: fit-content;
+}
+
+.project-duration {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--nature-mint);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tech-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--nature-mint);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 8px;
+  letter-spacing: 0.2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. FOOTER
+   -------------------------------------------------------------------------- */
+#site-footer {
+  background: var(--glass-nav);
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: blur(24px);
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1.25rem, 3vw, 2rem);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.25rem);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--nature-gold);
+  transform: translateY(-2px);
+}
+
+.copyright-text {
+  font-size: clamp(0.78rem, 1.4vw, 0.85rem);
+  color: var(--text-subtle);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   10. DETAILED RESPONSIVE BREAKPOINTS (DESKTOP, TABLET, MOBILE)
+   Fine-tunes layouts, touch targets, and typography across all viewports
+   -------------------------------------------------------------------------- */
+
+/* Large Desktop (> 1280px) */
+@media (min-width: 1281px) {
+  #main-content {
+    max-width: 1200px;
+  }
+}
+
+/* Standard Laptop & Desktop (1025px - 1280px) */
+@media (max-width: 1280px) {
+  .top-nav-container {
+    padding: 0.85rem 1.5rem;
+  }
+  .top-nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  .hero-container {
+    gap: 2.5rem;
+  }
+}
+
+/* Tablet Landscape & Small Laptop (901px - 1080px) */
+@media (max-width: 1080px) {
+  .top-nav-menu {
+    display: none; /* Collapse horizontal menu into mobile drawer */
+  }
+  .mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .mobile-nav-drawer {
+    display: block;
+  }
+  .hero-container {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+  }
+}
+
+/* Tablet Portrait & Large Phones (769px - 900px) */
+@media (max-width: 900px) {
+  .hero-section {
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+  .hero-text-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-main-title {
+    font-size: clamp(2.3rem, 6vw, 3rem);
+  }
+  .hero-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-highlights-row,
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-avatar-wrapper {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Medium & Small Tablets / Large Phones (641px - 768px) */
+@media (max-width: 768px) {
+  #top-header {
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+  }
+  .top-nav-container {
+    padding: 0.75rem 1.25rem;
+  }
+  .brand-title {
+    font-size: 1.15rem;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .nature-portrait-card {
+    max-width: 320px;
+  }
+  .portrait-img {
+    height: 360px;
+  }
+  /* Ensure floating badges don't overflow card borders */
+  .badge-top-left {
+    top: -8px;
+    left: -10px;
+  }
+  .badge-bottom-right {
+    bottom: 12px;
+    right: -10px;
+  }
+}
+
+/* Mobile Phones (481px - 640px) */
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 2.75rem 1.25rem;
+    border-radius: 22px;
+    min-height: auto;
+  }
+  .hero-main-title {
+    font-size: clamp(1.85rem, 7vw, 2.35rem);
+    letter-spacing: -0.015em;
+  }
+  .hero-status-pill {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.85rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 340px;
+  }
+  .nature-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+  }
+  .highlight-chip {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.8rem;
+  }
+  .nature-portrait-card {
+    max-width: 290px;
+    padding: 0.85rem;
+  }
+  .portrait-img {
+    height: 320px;
+  }
+  #main-content {
+    padding: 1.5rem 1rem 3rem;
+  }
+  .section {
+    padding: 2.25rem 1.25rem;
+    border-radius: 20px;
+  }
+}
+
+/* Small Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .top-nav-container {
+    padding: 0.65rem 1rem;
+  }
+  .brand-title {
+    font-size: 1.05rem;
+  }
+  .brand-badge-pill {
+    display: none; /* Hide micro badge on tiny screens to avoid crowding */
+  }
+  .nature-toggle-btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  #theme-label {
+    display: none; /* Icon-only toggle on tiny screens */
+  }
+  .hero-main-title {
+    font-size: 1.8rem;
+  }
+  .hero-tagline {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  .floating-badge {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .badge-top-left {
+    top: -6px;
+    left: -4px;
+  }
+  .badge-bottom-right {
+    bottom: 8px;
+    right: -4px;
+  }
+  .nature-portrait-card {
+    max-width: 270px;
+  }
+  .portrait-img {
+    height: 290px;
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+/* Touch Device Ergonomics (Eliminates Sticky Hover States) */
+@media (hover: none) and (pointer: coarse) {
+  .top-nav-link:hover,
+  .nature-btn:hover,
+  .info-card:hover,
+  .nature-portrait-card:hover {
+    transform: none;
+  }
+  .top-nav-link:active,
+  .nature-btn:active {
+    transform: scale(0.98);
+  }
+}
+
